@@ -9,41 +9,40 @@ import os
 globalBank = 0.0
 globalPreview =""
 
-def destroy(self, widget, data=None):
-    print("\n")
-    print("Application is Now Exiting...")
-    gtk.main_quit()
+def quit():
+    print((("\n")))
+    print((("Application is Now Exiting...")))
 
-def get_Date(self, widget):
+def get_Date():
     year, month, day = widget.get_date()
     self.lblCurDate.set_text(str(month + 1) + "/" + str(day) + "/" + str(year))
     
-def on_clear(self, widget):
-    print("\n")
-    print("Now Clearing Form...")
-    self.entryEarned.set_text("")
-    self.entryTaken.set_text("")
-    self.combobox1.set_active(0) #sets to [Enter One]
-    self.lblPreview.set_text("") #clears preview
-    self.lbl6.set_text("0.0")  #clears daily balance for next calculation
-    self.rbtnEarned.set_active(True) #sets focus to Earned Radio Button
-    self.window.show_all()
-    self.lblTaken.hide()  #hides Taken information until Taken button chosen
-    self.entryTaken.hide()
-    self.lbl2.hide()
+def on_clear():
+    print((("\n")))
+    print((("Now Clearing Form...")))
+    #self.entryEarned.set_text("")
+    #self.entryTaken.set_text("")
+    #self.combobox1.set_active(0) #sets to [Enter One]
+    #self.lblPreview.set_text("") #clears preview
+    #self.lbl6.set_text("0.0")  #clears daily balance for next calculation
+    #self.rbtnEarned.set_active(True) #sets focus to Earned Radio Button
+    #self.window.show_all()
+    #self.lblTaken.hide()  #hides Taken information until Taken button chosen
+    #self.entryTaken.hide()
+    #self.lbl2.hide()
 
-def on_calc_clicked(self, widget):
+def on_calc():
     global globalBank
     global globalPreview
-    print("\n")
-    print("Calculating New Daily Bal...")
+    print((("\n")))
+    print((("Calculating New Daily Bal...")))
     #sets up variables and gets Earned or Taken Values
-    date = self.lblCurDate.get_text()
-    calcearned = self.entryEarned.get_text()
-    calctaken = self.entryTaken.get_text()
-    preview = self.combobox1.get_active_text()
-    taken = self.entryTaken.get_text()
-    bank = globalBank
+    #date = self.lblCurDate.get_text()
+    #calcearned = self.entryEarned.get_text()
+    #calctaken = self.entryTaken.get_text()
+    #preview = self.combobox1.get_active_text()
+    #taken = self.entryTaken.get_text()
+    #bank = globalBank
     
     #If Earned is blank, it will be set to zero, otherwise it gets Earned
     #entry
@@ -65,10 +64,10 @@ def on_calc_clicked(self, widget):
     #convert to back to string to display in label
     newbal = str(newbal)
     newbank = str(newbank)
-    print("\n")
-    print("Setting Preview of New Balance Applied...")
+    print((("\n")))
+    print((("Setting Preview of New Balance Applied...")))
     #shows current calculation daily balance
-    self.lbl6.set_text(newbal)
+    #self.lbl6.set_text(newbal)
     
     
     #shows current preview of time entry prior to writing text file
@@ -85,10 +84,10 @@ def on_calc_clicked(self, widget):
     + newbank + "\n"
     + "-"*90 + "\n")
 
-def on_apply_clicked(self, widget):
+def on_apply():
     global globalBank #access global variable
-    print("\n")
-    print("Applying New Daily Balance to Bank...")
+    print(("\n"))
+    print(("Applying New Daily Balance to Bank..."))
     
     #incorporate to opening file
     bank2 = globalBank
@@ -97,7 +96,7 @@ def on_apply_clicked(self, widget):
     
     globalBank = (newbank2) #update global variable with new balance
     newbank2 = str(newbank2) #convert to string to put into label and file
-    self.lbl5.set_text(newbank2) #put in bank label
+    #self.lbl5.set_text(newbank2) #put in bank label
     
     #writes to the bankfile
     f = open("/home/sgarrison/temp/test1.txt", "w")
@@ -112,43 +111,32 @@ def on_apply_clicked(self, widget):
     
     self.on_clear(widget)
 
-def on_visible_callback(self, button, name):
-    if button.get_active():
-        state = "on"            
-    else:
-        state ="off"
-    #print("Button", name, " is ", state)
-    if name == "Earned" and state == "on":
-        #turns Earned Entry on for calculation and clear/hides
-        #Taken Entry. Resets Daily Balance and Preview Labels
-        self.entryEarned.show()
-        self.lblPreview.set_text("")
-        self.lbl6.set_text("0.0")
-        self.entryEarned.set_text("")
-        self.entryTaken.set_text("0.0")
-        self.lblTaken.hide()
-        self.entryTaken.hide()
-        self.lbl2.hide()
-    elif name == "Taken" and state == "on":
-        #turns Taken Entry on for calculation and clear/hides
-        #Earned Entry. Resets Daily Balance and Preview Labels
-        self.entryEarned.set_text("0.0")
-        self.entryTaken.set_text("")
-        self.lblPreview.set_text("")
-        self.lbl6.set_text("0.0")
-        self.lblEarned.hide()
-        self.entryEarned.hide()
-        self.lbl1.hide()
-        self.entryTaken.show()
-    else:
-        self.window.show_all()
+#def on_visible_callback():
+#    if name == "Earned" and state == "on":
+#        #turns Earned Entry on for calculation and clear/hides
+#        #Taken Entry. Resets Daily Balance and Preview Labels
+#        self.entryEarned.show()
+#        self.lblPreview.set_text("")
+#        self.lbl6.set_text("0.0")
+#        self.entryEarned.set_text("")
+#        self.entryTaken.set_text("0.0")
+#        self.lblTaken.hide()
+#        self.entryTaken.hide()
+#        self.lbl2.hide()
+#    elif name == "Taken" and state == "on":
+#        #turns Taken Entry on for calculation and clear/hides
+#        #Earned Entry. Resets Daily Balance and Preview Labels
+#        self.entryEarned.set_text("0.0")
+#        self.entryTaken.set_text("")
+#        self.lblPreview.set_text("")
+#        self.lbl6.set_text("0.0")
+#        self.lblEarned.hide()
+#        self.entryEarned.hide()
+#        self.lbl1.hide()
+#        self.entryTaken.show()
+#    else:
+#        self.window.show_all()
         
-def on_text_changed(self, widget):
-    self.entryEarned.set_text("")
-    self.entryTaken.set_text("")
-    self.lblPreview.set_text("") #clears preview
-    self.lbl6.set_text("")  #clears daily balance for next calculation
-    self.rbtnEarned.set_active(True) #sets focus to Earned Radio Button    
 
 
 #start program
@@ -163,7 +151,7 @@ def on_text_changed(self, widget):
 
 #---------------------------------------------------------------------
 
-#pulls bank amount from text file and loads it for globaBank 
+#pulls bank amount from text file and loads it for globalBank 
 global globalBank
 
 #checks to see if the bankfile exists.  If it does, it pulls from it.
@@ -228,8 +216,4 @@ self.entryTaken = gtk.Entry()
 #self.combobox1.append_text("Personal")
 #self.combobox1.append_text("Sick")
 
-
-
-#self.lbl6 = gtk.Label("0.0")
-       
 
