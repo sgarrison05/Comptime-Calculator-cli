@@ -20,16 +20,6 @@ def get_Date():
 def on_clear():
     print("\n")
     print("Now Clearing Form...")
-    #self.entryEarned.set_text("")
-    #self.entryTaken.set_text("")
-    #self.combobox1.set_active(0) #sets to [Enter One]
-    #self.lblPreview.set_text("") #clears preview
-    #self.lbl6.set_text("0.0")  #clears daily balance for next calculation
-    #self.rbtnEarned.set_active(True) #sets focus to Earned Radio Button
-    #self.window.show_all()
-    #self.lblTaken.hide()  #hides Taken information until Taken button chosen
-    #self.entryTaken.hide()
-    #self.lbl2.hide()
 
 def on_calc():
     global globalBank
@@ -113,6 +103,8 @@ def on_apply():
 
 
 #start program
+print("Comptime Calculator")
+print("---------------------------------------------------------------")
 
 
 #creates the applicable buttons
@@ -122,10 +114,8 @@ def on_apply():
 #self.btnClose = gtk.Button("Exit")
 
 
-#---------------------------------------------------------------------
-
 #pulls bank amount from text file and loads it for globalBank 
-global globalBank
+#global globalBank
 
 #checks to see if the bankfile exists.  If it does, it pulls from it.
 if os.path.isdir("/home/sgarrison/temp/") and os.path.isfile("/home/sgarrison/temp/test1.txt"):
@@ -157,7 +147,12 @@ else:
     + "-"*9 + " "*7 + "-"*12 + " "*6 + "-"*7 + " "*15 
     + "-"*6  + " "*14 + "-"*12 + "\n")
 
-#---------------------------------------------------------------------
+
+print("Your Current Balance is " + str(globalBank))
+
+
+
+
 
 #creates the applicable labels
 #self.lblPreview = gtk.Label("Preview")
@@ -183,5 +178,7 @@ else:
 #self.combobox1.append_text("Program")
 #self.combobox1.append_text("Personal")
 #self.combobox1.append_text("Sick")
+
+quit()
 
 
