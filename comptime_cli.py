@@ -8,24 +8,30 @@ import os
 
 globalBank = 0.0
 globalPreview =""
+running = True
 
 def quit():
     print("\n")
     print("Application is Now Exiting...")
 
 def get_Date():
+    #get the date for the current transaction
     year, month, day = widget.get_date()
-    self.lblCurDate.set_text(str(month + 1) + "/" + str(day) + "/" + str(year))
-    
+    trxns_date = (str(month + 1) + "/" + str(day) + "/" + str(year))
+
 def on_clear():
     print("\n")
     print("Now Clearing Form...")
 
 def on_calc():
-    global globalBank
+
+    #Access to global variables
+    global globalBank 
     global globalPreview
+    
     print("\n")
     print("Calculating New Daily Bal...")
+
     #sets up variables and gets Earned or Taken Values
     #date = self.lblCurDate.get_text()
     #calcearned = self.entryEarned.get_text()
@@ -40,28 +46,31 @@ def on_calc():
         calcearned = 0.0
     else:
         calcearned = self.entryEarned.get_text()
+
     #if Taken is blank, it will be set to zero, otherwise it gets Taken
     #entry
     if calctaken == "":
         calctaken = 0.0
     else:
         calctaken = self.entryTaken.get_text() 
+
     #convert string variables to decimal(float) for calculation
     calcearned = float(calcearned) * 1.5
     calctaken = float(calctaken)
     newbal = calcearned - calctaken
     newbank = newbal + float(bank)
+
     #convert to back to string to display in label
     newbal = str(newbal)
     newbank = str(newbank)
     print("\n")
     print("Setting Preview of New Balance Applied...")
+
     #shows current calculation daily balance
     #self.lbl6.set_text(newbal)
     
-    
     #shows current preview of time entry prior to writing text file
-    self.lblPreview.set_text("Total time to enter on affidavit = " 
+    print("Total time to enter on affidavit = " 
     + newbal + " hrs\n" + "-"*145 + "\n" + "Date" + " "*25 + "Reason"
     + " "*25 + "Earned" + " "*25 + "Taken" + " "*25 + "New Balance\n"
     + "-"*9 + " "*24 + "-"*12 + " "*25 + "-"*12 + " "*25 + "-"*10
@@ -69,6 +78,7 @@ def on_calc():
     + " "*25 + str(calcearned) + " "*40 + str(taken) + " "*30
     + newbank)
 
+    #What gets put into run file on applying calc
     globalPreview = (str(date) + " "*8 + str(preview) 
     + " "*10 + str(calcearned) + " "*18 + str(taken) + " "*17 
     + newbank + "\n"
@@ -98,24 +108,11 @@ def on_apply():
     f2.write(globalPreview)
     f2.close()
     
-    
-    self.on_clear(widget)
-
 
 #start program
 print("Comptime Calculator")
 print("---------------------------------------------------------------")
 
-
-#creates the applicable buttons
-#self.btnClear = gtk.Button("Clear")
-#self.btnCalc = gtk.Button("Calculate")
-#self.btnApply = gtk.Button("Apply")
-#self.btnClose = gtk.Button("Exit")
-
-
-#pulls bank amount from text file and loads it for globalBank 
-#global globalBank
 
 #checks to see if the bankfile exists.  If it does, it pulls from it.
 if os.path.isdir("/home/sgarrison/temp/") and os.path.isfile("/home/sgarrison/temp/test1.txt"):
@@ -148,37 +145,40 @@ else:
     + "-"*6  + " "*14 + "-"*12 + "\n")
 
 
-print("Your Current Balance is " + str(globalBank))
+while running:
+    print("Your Current Balance is " + str(globalBank))
 
+    print("---------------------------------------------------------------")
 
+    print("What do you want to do?\n")
+    print("1.) Add a transaction")
+    print("2.) Exit\n")
+    choice = int(input())
 
+    if choice == 1:
+        print()
+        print("Type of Transaction\n")
+        print("1. Earned (+)")
+        print("2. Taken (-)\n")
+        transaction = int(input())
 
+        if transaction == 1:
+            print()
+            print("Examples include--On-Call, Det Visit, Special Grp, Tranpsort, Program, or you may write your own.")
+            print("Reason for earned time?\n")
+            reason = str(input())
+            quit()
 
-#creates the applicable labels
-#self.lblPreview = gtk.Label("Preview")
-#self.lbl7 = gtk.Label("Current Date Selected:")
-#self.lblCurDate = gtk.Label("Select Activity Date")
-#self.lblCase = gtk.Label("Case / Reason:")
-#self.lbl1 = gtk.Label("hrs")
-#self.lblEarned = gtk.Label("Earned")
-#self.lblTaken = gtk.Label("Taken")
-#self.lbl2 = gtk.Label("hrs")
-#self.lbl3 = gtk.Label("Bank:")
-#self.lbl5 = gtk.Label(text)
-#self.lbl4 = gtk.Label("Daily Total:")
-#self.lbl6 = gtk.Label("0.0")
+        else:
+            print()
+            print("Examples include--Sick, Personal, or you may write your own.")
+            print("Reason for time taken?\n")
+            reason = str(input())
+            quit()
 
+    else:
 
-#creates the list for the combobox
-#self.combobox1.append_text("[Enter One]")
-#self.combobox1.append_text("On-Call")
-#self.combobox1.append_text("Det Visit")
-#self.combobox1.append_text("Special Grp")
-#self.combobox1.append_text("Transport")
-#self.combobox1.append_text("Program")
-#self.combobox1.append_text("Personal")
-#self.combobox1.append_text("Sick")
-
-quit()
+        quit()
+        running = False
 
 
