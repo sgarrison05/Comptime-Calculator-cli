@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# D:\Programming/github/python/comptime/comptime_cli/comptime_cli.py
+# D:\Programming/under_construction_MyScripts/python/comptime/comptime_cli/comptime_cli.py
 # by Shon Garrison
 # Created on: Aug 1, 2012
 # Updated on: September 24, 2021
@@ -95,11 +95,6 @@ def on_apply():
     gBank = (str(newbank2))  # update global variable with new balance
     newbank2 = str(newbank2)  # convert to string to put into label and file
 
-    # writes to the bank file
-    f = open("D:\Temp/test1.txt", "w")
-    f.write(newbank2)
-    f.close()
-
     # writes to runfile
     f2 = open("D:\Temp/test2.txt", "a")
     f2.write(gPreview)
@@ -111,28 +106,26 @@ print("Comptime Calculator")
 print("---------------------------------------------------------------")
 
 # checks to see if the bank file exists.  If it does, it pulls from it.
-if os.path.isdir("D:\Temp/") and os.path.isfile("D:\Temp/test1.txt"):
-    f = open("D:\Temp/test1.txt", "r")
-    text = f.readline()
-    gBank = float(text)
+if os.path.isdir("D:\Temp/") and os.path.isfile("D:\Temp/test2.txt"):
+    f = open("D:\Temp/test2.txt", "r")
+    my_list = []
+    for line in f:
+        for char in line:
+            if char[-1] == "\n" and line.__contains__("."):
+                t = float(line[-7:-1].lstrip(" "))
+                my_list.append(t)
+    gBank = my_list[-1]
     f.close()
 
 else:
     # if bank file doesn't exist, it creates it with a 0.0 balance then
     # reads from it.
     startBal = "0.0"
-    f = open("D:\Temp/test1.txt", "w")
-    f.write(startBal)
-    f.close()
-
-    f = open("D:\Temp/test1.txt", "r")
-    text = f.readline()
-    gBank = float(text)
-    f.close()
+    gBank = float(startBal)
 
     # Creates running file skeleton
     f = open("D:\Temp/test2.txt", "w")
-    f.write("Orange County Juvenile Probation Dept.\n"
+    f.write("Orange County Juvenile Probation Dept\n"
             + "-" * 40 + "\n"
             + "Personal Comptime Sheet for: Shon Garrison\n"
             + "\n"
