@@ -66,16 +66,26 @@ def on_calc(cearned, ctaken, reason):
     # shows current preview of time entry prior to writing text file
     print("Total time to enter on affidavit = " + newbal + " hrs\n"
           + "-" * 115 + "\n"
-          + "Date" + " " * 18 + "Reason" + " " * 16 + "Earned" + " " * 18 + "Taken" + " " * 17 + "New Balance\n"
-          + "-" * 10 + " " * 12 + "-" * 10 + " " * 12 + "-" * 12 + " " * 12 + "-" * 10
-          + " " * 12 + "-" * 15 + "\n" + str(dte) + " " * 12 + reason + " " * 12
-          + str(cearned) + " " * 21 + str(ctaken) + " " * 19
+          + "Date" + " " * 18 
+          + "Reason" + " " * 16 
+          + "Earned" + " " * 18 
+          + "Taken" + " " * 17 + "New Balance\n"
+          + "-" * 10 + " " * 12 + "-" * 10 + " " * 12 
+          + "-" * 12 + " " * 12 + "-" * 10
+          + " " * 12 + "-" * 15 + "\n" 
+          + str(dte) + " " * 12 
+          + reason + " " * 12
+          + str(cearned) + " " * 21 
+          + str(ctaken) + " " * 19
           + newbank)
     print()
 
     # What gets put into run file on applying calc
-    gPreview = (str(dte) + " " * 7 + reason + " " * 6 + str(cearned)
-                + " " * 19 + str(ctaken) + " " * 17
+    gPreview = (str(dte) + " " * 7 
+                + reason + " " * 6 
+                + str(cearned)
+                + " " * 19 
+                + str(ctaken) + " " * 17
                 + newbank + "\n"
                 + "-" * 90 + "\n")
 
@@ -129,8 +139,13 @@ else:
             + "-" * 40 + "\n"
             + "Personal Comptime Sheet for: Shon Garrison\n"
             + "\n"
-            + "Date" + " " * 13 + "Reason" + " " * 11 + "Earned" + " " * 16 + "Taken" + " " * 15 + "New Balance\n"
-            + "-" * 9 + " " * 7 + "-" * 12 + " " * 6 + "-" * 7 + " " * 15
+            + "Date" + " " * 13 
+            + "Reason" + " " * 11 
+            + "Earned" + " " * 16 
+            + "Taken" + " " * 15 
+            + "New Balance\n"
+            + "-" * 9 + " " * 7 + "-" * 12 
+            + " " * 6 + "-" * 7 + " " * 15
             + "-" * 6 + " " * 14 + "-" * 12 + "\n")
     f.close()
 
