@@ -1,8 +1,7 @@
 #!/usr/bin/python3
-# D:\Programming/under_construction_MyScripts/python/comptime/comptime_cli/comptime_cli.py
 # by Shon Garrison
 # Created on: Aug 1, 2012
-# Updated on: September 24, 2021
+# Updated on: September 2023
 
 import os
 from datetime import date
@@ -87,7 +86,7 @@ def on_calc(cearned, ctaken, reason):
                 + " " * 19 
                 + str(ctaken) + " " * 17
                 + newbank + "\n"
-                + "-" * 90 + "\n")
+                + "-" * 100 + "\n")
 
 
 def on_apply():
