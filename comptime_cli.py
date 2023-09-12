@@ -64,7 +64,7 @@ def on_calc(cearned, ctaken, reason):
 
     # shows current preview of time entry prior to writing text file
     print("Total time to enter on affidavit = " + newbal + " hrs\n"
-          + "-" * 115 + "\n"
+          + "-" * 100 + "\n"
           + "Date" + " " * 18 
           + "Reason" + " " * 16 
           + "Earned" + " " * 18 
