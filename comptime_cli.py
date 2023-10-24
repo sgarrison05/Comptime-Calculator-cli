@@ -68,7 +68,7 @@ def on_calc(cearned, ctaken, reason):
           + "Date" + " " * 18 
           + "Reason" + " " * 16 
           + "Earned" + " " * 18 
-          + "Taken" + " " * 17 + "New Balance\n"
+          + "Taken" + " " * 17 + "Balance\n"
           + "-" * 10 + " " * 12 + "-" * 10 + " " * 12 
           + "-" * 12 + " " * 12 + "-" * 10
           + " " * 12 + "-" * 15 + "\n" 
