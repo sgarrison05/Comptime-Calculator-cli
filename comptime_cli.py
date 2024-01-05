@@ -21,6 +21,7 @@ def quit():
 def get_Date():
     # get the date for the current transaction
     today = date.today()
+    print()
     answer = input("Do you have a date to enter? (y=enter date, n=today) \n")
 
     if answer == "y":
@@ -45,8 +46,9 @@ def on_calc(cearned, ctaken, reason):
     bank = gBank
     dte = get_Date()
 
-    print("\n")
+    print()
     print("Calculating New Daily Bal...")
+    print()
 
     # convert string variables to decimal(float) for calculation
     cearned = float(cearned) * 1.5
@@ -58,8 +60,9 @@ def on_calc(cearned, ctaken, reason):
     # convert to back to string to display in label
     newbal = str(newbal)
     newbank = str(newbank)
-    print("\n")
+    print()
     print("Setting Preview of New Balance Applied...")
+    print()
     print()
 
     # shows current preview of time entry prior to writing text file
@@ -71,12 +74,13 @@ def on_calc(cearned, ctaken, reason):
           + "Taken" + " " * 17 + "Balance\n"
           + "-" * 10 + " " * 12 + "-" * 10 + " " * 12 
           + "-" * 12 + " " * 12 + "-" * 10
-          + " " * 12 + "-" * 15 + "\n" 
+          + " " * 12 + "-" * 10 + "\n" 
           + str(dte) + " " * 12 
           + reason + " " * 12
           + str(cearned) + " " * 21 
           + str(ctaken) + " " * 19
-          + newbank)
+          + newbank + "\n"
+          + "-" * 100) 
     print()
 
     # What gets put into run file on applying calc
@@ -92,7 +96,7 @@ def on_calc(cearned, ctaken, reason):
 def on_apply():
     global gBank  # access global variable
     global gPreview
-    print("\n")
+    print()
     print("Applying New Daily Balance to Bank...")
     print()
 
@@ -112,6 +116,7 @@ def on_apply():
 # ====================================================================================
     
 # start program
+print()
 print("Comptime Calculator")
 print("---------------------------------------------------------------")
 
@@ -152,6 +157,7 @@ else:
 while running:
     print()
     print("Your Current Balance is " + str(gBank))
+    print()
     print("---------------------------------------------------------------")
     print()
 
@@ -172,6 +178,7 @@ while running:
             print("Examples include -- On-Call, Det Visit, Special Grp, Transport, Program, or you may write your own.")
             reason = input("Reason for earned time?\n")
             reason = reason.ljust(11, " ")
+            print()
             earned = str(input("Enter time in \"0.00\" format\n"))
             taken = float(0.00)
             on_calc(earned, taken, reason)
@@ -182,12 +189,12 @@ while running:
             print("Examples include -- Sick, Personal, or you may write your own.")
             reason = str(input("Reason for time taken?\n"))
             reason = reason.ljust(11, " ")
+            print()
             taken = str(input("Enter time in \"0.00\" format\n"))
             earned = float(0.00)
             on_calc(earned, taken, reason)
             on_apply()
 
     else:
-
         quit()
         running = False
