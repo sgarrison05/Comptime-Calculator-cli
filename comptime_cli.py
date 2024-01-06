@@ -13,7 +13,7 @@ running = True
 
 
 def quit():
-    print("\n")
+    print()
     print("Application is Now Exiting...")
     exit()
 
@@ -47,7 +47,7 @@ def on_calc(cearned, ctaken, reason):
     dte = get_Date()
 
     print()
-    print("Calculating New Daily Bal...")
+    print("Calculating New Daily Balance...")
     print()
 
     # convert string variables to decimal(float) for calculation
