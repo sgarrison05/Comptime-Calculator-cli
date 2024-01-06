@@ -1,2 +1,2 @@
-# comptime_calculator_cli_py
-Basic Comptime Calculator CLI version for the minimalist.
+# Comptime Calculator CLI - Version
+Basic Comptime Calculator used in the terminal for the minimalist.
