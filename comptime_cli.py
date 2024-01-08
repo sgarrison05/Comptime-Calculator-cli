@@ -1,15 +1,18 @@
 #!/usr/bin/python3
 # by Shon Garrison
 # Created on: Aug 1, 2012
-# Updated on: September 2023
+# Updated on: January 2024
 
 import os
 from datetime import date
+import users as nu
 
 gBank = 0.0
 gPreview = ""
 gDaily_Bank = 0.0
 running = True
+gname = ''
+gposition = ''
 
 
 def quit():
@@ -71,24 +74,24 @@ def on_calc(cearned, ctaken, reason):
           + "Date" + " " * 18 
           + "Reason" + " " * 16 
           + "Earned" + " " * 18 
-          + "Taken" + " " * 17 + "Balance\n"
+          + "Taken" + " " * 17 
+          + "Balance\n"
           + "-" * 10 + " " * 12 + "-" * 10 + " " * 12 
           + "-" * 12 + " " * 12 + "-" * 10
           + " " * 12 + "-" * 10 + "\n" 
           + str(dte) + " " * 12 
-          + reason + " " * 12
-          + str(cearned) + " " * 21 
-          + str(ctaken) + " " * 19
+          + "{:11s}".format(reason) + " " * 12
+          + "{:5s}".format(str(cearned)) + " " * 19 
+          + "{:5s}".format(str(ctaken)) + " " * 18
           + newbank + "\n"
           + "-" * 100) 
     print()
 
     # What gets put into run file on applying calc
     gPreview = (str(dte) + " " * 7 
-                + reason + " " * 6 
-                + str(cearned)
-                + " " * 19 
-                + str(ctaken) + " " * 17
+                + "{:11s}".format(reason) + " " * 12 
+                + "{:5s}".format(str(cearned)) + " " * 19                 
+                + "{:5s}".format(str(ctaken)) + " " * 18
                 + newbank + "\n"
                 + "-" * 100 + "\n")
 
@@ -109,7 +112,7 @@ def on_apply():
     newbank2 = str(newbank2)  # convert to string to put into label and file
 
     # writes to runfile
-    f2 = open("D:\Temp/test2.txt", "a")
+    f2 = open("D:/Temp/test2.txt", "a")
     f2.write(gPreview)
     f2.close()
 
@@ -121,8 +124,8 @@ print("Comptime Calculator")
 print("---------------------------------------------------------------")
 
 # checks to see if the bank file exists.  If it does, it pulls from it.
-if os.path.isdir("D:\Temp/") and os.path.isfile("D:\Temp/test2.txt"):
-    f = open("D:\Temp/test2.txt", "r")
+if os.path.isdir("D:/Temp/") and os.path.isfile("D:/Temp/test2.txt"):
+    f = open("D:/Temp/test2.txt", "r")
     my_list = []
     for line in f:
         for char in line:
@@ -135,23 +138,44 @@ if os.path.isdir("D:\Temp/") and os.path.isfile("D:\Temp/test2.txt"):
 else:
     # if bank file doesn't exist, it creates it with a 0.0 balance then
     # reads from it.
-    startBal = "0.0"
-    gBank = float(startBal)
+    gBank = float("0.00")
+    dte_today = date.today()
+    d2 = dte_today.strftime("%m/%d/%Y")
+    gname = input("What is your name? ")
+    print()
+    print("Examples are Chief, JPO, and OS-(Office Staff)")
+    gposition = input("What is your position? ")
+
+    match gposition:
+        case "Chief":
+            gname = nu.Chief(gname)
+        case "JPO":
+            gname = nu.JPO(gname)
+        case "OS":
+            gname = nu.OS(gname)
+        case _:
+            print("That position does not exist!")
 
     # Creates running file skeleton
-    f = open("D:\Temp/test2.txt", "w")
+    f = open("D:/Temp/test2.txt", "w")
     f.write("Orange County Juvenile Probation Dept\n"
             + "-" * 40 + "\n"
-            + "Personal Comptime Sheet for: Shon Garrison\n"
+            + "Personal Comptime Sheet for: " + str(gname.name) + "\n"
             + "\n"
-            + "Date" + " " * 13 
-            + "Reason" + " " * 11 
-            + "Earned" + " " * 16 
-            + "Taken" + " " * 15 
+            + "Date" + " " * 14 
+            + "Reason" + " " * 16 
+            + "Earned" + " " * 18 
+            + "Taken" + " " * 17 
             + "New Balance\n"
-            + "-" * 9 + " " * 7 + "-" * 12 
-            + " " * 6 + "-" * 7 + " " * 15
-            + "-" * 6 + " " * 14 + "-" * 12 + "\n")
+            + "-" * 10 + " " * 7 + "-" * 10 + " " * 12  
+            + "-" * 12 + " " * 12 + "-" * 10
+            + " " * 13 + "-" * 14 + "\n"
+            + str(d2) + " " * 7
+            + "Placeholder" + " " * 12
+            + "{:5s}".format("0.00") + " " * 19 
+            + "{:5s}".format("0.00") + " " * 18
+            + str(gBank) + "\n"
+            + "-" * 100 + "\n")
     f.close()
 
 while running:

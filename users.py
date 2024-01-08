@@ -1,14 +1,12 @@
-#!/usr/bin/python3
 """A set of classes to represent officers at the office."""
 
 class User:
-    """A simplet attempt to represent an individual"""
-    companyName = 'Orange County Juvenile Probation Dept.'
-    
+    """A simplet attempt to represent an individual"""    
+
     def __init__(self, name, title):
         self.name = name
         self._title = title
-
+        
     def __str__(self):
         """Print at statement describing the individual created"""
         return "Name = %s, Position = %s" %(self.name, self._title) 
@@ -32,7 +30,7 @@ class OS(User):
         super().__init__(name, 'Office Staff')
 
     def calculate_Comp(self):
-        """Calculates Comptime for JPO's at time-and-a-half."""
+        """Calculates Comptime for Office Staff at time-and-a-half."""
         rate = float(1.50)
         
         prompt = '\nEnter number of hours worked for %s: ' %(self.name)
@@ -43,12 +41,12 @@ class OS(User):
     
 
 class JPO(User):
-    """Represents an Ordinary Line Officer at the office."""
+    """Represents an Ordinary Line Officer at the Office."""
     def __init__(self, name):
         super().__init__(name, 'JPO')
 
     def calculate_Comp(self):
-        """Calculates Comptime for JPO's at time-and-a-half."""
+        """Calculates Comptime for JPOs at time-and-a-half."""
         rate = float(1.50)
         
         prompt = '\nEnter number of hours worked for %s: ' %(self.name)
