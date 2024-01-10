@@ -157,7 +157,7 @@ else:
 
     # Creates running file skeleton
     f = open("/home/sgarrison/Temp/test2.txt", "w")
-    f.write("Orange County Juvenile Probation Dept\n" 
+    f.write(nu.JPO.companyName + "\n" 
             + "-" * 40 + "\n"
             + "Personal Comptime Sheet for: " + str(gname.name) + "\n"
             + "\n"
