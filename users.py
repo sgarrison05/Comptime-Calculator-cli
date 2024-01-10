@@ -3,6 +3,8 @@
 class User:
     """A simplet attempt to represent an individual"""    
 
+    CompanyName = "Orange County Juvenile Probation Dept."
+
     def __init__(self, name, title):
         self.name = name
         self._title = title
