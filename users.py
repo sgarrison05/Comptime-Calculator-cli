@@ -29,7 +29,7 @@ class User:
 class OS(User):
     """Represents an Ordinary Line Officer at the office."""
     def __init__(self, name):
-        super().__init__(name, 'Office Staff')
+        super().__init__(name, title='Office Staff')
 
     def calculate_Comp(self):
         """Calculates Comptime for Office Staff at time-and-a-half."""
@@ -45,7 +45,7 @@ class OS(User):
 class JPO(User):
     """Represents an Ordinary Line Officer at the Office."""
     def __init__(self, name):
-        super().__init__(name, 'JPO')
+        super().__init__(name, title='JPO')
 
     def calculate_Comp(self):
         """Calculates Comptime for JPOs at time-and-a-half."""
@@ -61,7 +61,7 @@ class JPO(User):
 class Chief(User):
     """Represents the Chief Juv Officer at the Office"""
     def __init__(self, name):
-        super().__init__(name, 'Chief')
+        super().__init__(name, title='Chief')
         
     def calculate_Comp(self):
         """Calculates Comptime for the Chief at Straight Time Value"""
