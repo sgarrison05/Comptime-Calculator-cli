@@ -157,6 +157,7 @@ else:
             print("That position does not exist!")
             print("Cannot create bankfile.")
             quit()
+            running = False
 
     # Creates running file skeleton
     f = open("D:/Temp/test2.txt", "w")
