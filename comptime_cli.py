@@ -128,7 +128,7 @@ if os.path.isdir("/home/sgarrison/Temp/") and os.path.isfile("/home/sgarrison/Te
     my_list = []
     for line in f:
         for char in line:
-            if char[-1] == "\n" and line.__contains__("."):
+            if char[-1] == "\n" and line.__contains__("/"):
                 t = float(line[-7:-1].lstrip(" "))
                 my_list.append(t)
     gBank = my_list[-1]
@@ -142,7 +142,7 @@ else:
     d2 = dte_today.strftime("%m/%d/%Y")
     gname = input("What is your name? ")
     print()
-    print("Examples are Chief, JPO, and OS-(Office Staff)")
+    print("Examples are Chief, JPO, or Staff")
     gposition = input("What is your position? ")
 
     match gposition:
@@ -150,16 +150,18 @@ else:
             gname = nu.Chief(gname)
         case "JPO":
             gname = nu.JPO(gname)
-        case "OS":
-            gname = nu.OS(gname)
+        case "Staff":
+            gname = nu.Staff(gname)
         case _:
             print("That position does not exist!")
+            quit()
+            running = False
 
     # Creates running file skeleton
     f = open("/home/sgarrison/Temp/test2.txt", "w")
-    f.write(nu.JPO.companyName + "\n" 
+    f.write(nu.User.companyName + "\n" 
             + "-" * 40 + "\n"
-            + "Personal Comptime Sheet for: " + str(gname.name) + "\n"
+            + "Personal Comptime Sheet for: " + str(gname.name) + ", " + str(gname._title) + "\n"
             + "\n"
             + "Date" + " " * 14 
             + "Reason" + " " * 16 
