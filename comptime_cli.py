@@ -151,10 +151,12 @@ else:
             gname = nu.Chief(gname)
         case "JPO":
             gname = nu.JPO(gname)
-        case "OS":
+        case "Staff":
             gname = nu.Staff(gname)
         case _:
             print("That position does not exist!")
+            print("Cannot create bankfile.")
+            quit()
 
     # Creates running file skeleton
     f = open("D:/Temp/test2.txt", "w")
