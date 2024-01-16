@@ -26,7 +26,7 @@ class User:
             print("Position is invalid.  No changes made.")"""
 
 
-class OS(User):
+class Staff(User):
     """Represents an Ordinary Line Officer at the office."""
     def __init__(self, name):
         super().__init__(name, title='Office Staff')
