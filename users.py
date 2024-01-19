@@ -35,11 +35,7 @@ class Staff(User):
         """Calculates Comptime for Office Staff at time-and-a-half."""
         rate = float(1.50)
         
-        prompt = '\nEnter number of hours worked for %s: ' %(self.name)
-        hours = input(prompt)
-        cmptime = float(hours) * rate
-
-        return cmptime
+        return 
     
 
 class JPO(User):
@@ -51,11 +47,7 @@ class JPO(User):
         """Calculates Comptime for JPOs at time-and-a-half."""
         rate = float(1.50)
         
-        prompt = '\nEnter number of hours worked for %s: ' %(self.name)
-        hours = input(prompt)
-        cmptime = float(hours) * rate
-
-        return cmptime
+        return 
             
 
 class Chief(User):
@@ -66,11 +58,7 @@ class Chief(User):
     def calculate_Comp(self):
         """Calculates Comptime for the Chief at Straight Time Value"""
         rate = float(1.00)
-
-        prompt = '\nEnter number of hours worked for %s: ' %(self.name)
-        hours = input(prompt)
-        ch_cmptime = float(hours) * rate
-
-        return ch_cmptime
+        
+        return 
 
     
