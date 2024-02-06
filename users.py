@@ -28,6 +28,7 @@ class User:
 
 class Staff(User):
     """Represents an Ordinary Line Officer at the office."""
+    # Get the parent attributes with super().__init__ 
     def __init__(self, name):
         super().__init__(name, title='Office Staff')
 
