@@ -7,19 +7,18 @@ import os
 from datetime import date
 import users as nu
 
-gBank = 0.0
-gPreview = ""
-gDaily_Bank = 0.0
-running = True
-gname = ''
-gposition = ''
+gBank:float = 0.00
+gPreview:str = ""
+gDaily_Bank:float = 0.00
+running:bool = True
+gname:str = ''
+gposition:str = ''
 
 
 def quit():
     print()
     print("Application is Now Exiting...")
     exit()
-
 
 def get_Date():
     # get the date for the current transaction
@@ -39,7 +38,6 @@ def get_Date():
         d1 = today.strftime("%m/%d/%Y")
 
     return d1
-
 
 def on_calc(cearned, ctaken, reason):
     global gPreview  # Access to global variable
@@ -95,7 +93,6 @@ def on_calc(cearned, ctaken, reason):
                 + newbank + "\n"
                 + "-" * 100 + "\n")
 
-
 def on_apply():
     global gBank  # access global variable
     global gPreview
@@ -116,9 +113,11 @@ def on_apply():
     f2.write(gPreview)
     f2.close()
 
+
 # ====================================================================================
     
 # start program
+print()
 print()
 print("Comptime Calculator")
 print("---------------------------------------------------------------")
@@ -138,7 +137,7 @@ if os.path.isdir("D:/Temp/") and os.path.isfile("D:/Temp/test2.txt"):
 else:
     # if bank file doesn't exist, it creates it with a 0.0 balance then
     # reads from it.
-    gBank = float("0.00")
+    gBank:float = 0.00
     dte_today = date.today()
     d2 = dte_today.strftime("%m/%d/%Y")
     gname = input("What is your name? ")
@@ -207,7 +206,7 @@ while running:
             reason = reason.ljust(11, " ")
             print()
             earned = str(input("Enter time in \"0.00\" format\n"))
-            taken = float(0.00)
+            taken:float = 0.00
             on_calc(earned, taken, reason)
             on_apply()
 
@@ -218,7 +217,7 @@ while running:
             reason = reason.ljust(11, " ")
             print()
             taken = str(input("Enter time in \"0.00\" format\n"))
-            earned = float(0.00)
+            earned:float = 0.00
             on_calc(earned, taken, reason)
             on_apply()
 
