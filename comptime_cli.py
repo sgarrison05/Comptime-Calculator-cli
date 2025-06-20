@@ -109,7 +109,7 @@ def on_apply():
     newbank2 = str(newbank2)  # convert to string to put into label and file
 
     # writes to runfile
-    f2 = open("D:/Temp/test2.txt", "a")
+    f2 = open("D:/Temp/Comptime/comptimerun.txt", "a")
     f2.write(gPreview)
     f2.close()
 
@@ -117,14 +117,20 @@ def on_apply():
 # ====================================================================================
     
 # start program
+
+if os.name == 'nt':
+    _ = os.system('cls')
+else:
+    _ = os.system('clear')
+
 print()
 print()
 print("Comptime Calculator")
 print("---------------------------------------------------------------")
 
 # checks to see if the bank file exists.  If it does, it pulls from it.
-if os.path.isdir("D:/Temp/") and os.path.isfile("D:/Temp/test2.txt"):
-    f = open("D:/Temp/test2.txt", "r")
+if os.path.isdir("D:/Temp/Comptime") and os.path.isfile("D:/Temp/Comptime/comptimerun.txt"):
+    f = open("D:/Temp/Comptime/comptimerun.txt", "r")
     my_list = []
     for line in f:
         for char in line:
@@ -159,7 +165,7 @@ else:
             running = False
 
     # Creates running file skeleton
-    f = open("D:/Temp/test2.txt", "w")
+    f = open("D:/Temp/Comptime/comptimerun.txt", "w")
     f.write(nu.User.CompanyName +"\n"
             + "-" * 40 + "\n"
             + "Personal Comptime Sheet for: " + str(gname.name) + ", " + str(gname._title) + "\n"
