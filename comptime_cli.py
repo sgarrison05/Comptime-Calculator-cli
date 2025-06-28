@@ -13,6 +13,7 @@ gDaily_Bank:float = 0.00
 running:bool = True
 gname:str = ''
 gposition:str = ''
+grate:float = 0.00
 
 
 def quit():
@@ -52,7 +53,7 @@ def on_calc(cearned, ctaken, reason):
     print()
 
     # convert string variables to decimal(float) for calculation
-    cearned = float(cearned) * 1.5
+    cearned = float(cearned) * grate
     ctaken = float(ctaken)
     newbal = cearned - ctaken
     newbank = newbal + float(bank)
@@ -132,11 +133,21 @@ print("---------------------------------------------------------------")
 if os.path.isdir("D:/Temp/Comptime") and os.path.isfile("D:/Temp/Comptime/comptimerun.txt"):
     f = open("D:/Temp/Comptime/comptimerun.txt", "r")
     my_list = []
+    
     for line in f:
         for char in line:
             if char[-1] == "\n" and line.__contains__("/"):
                 t = float(line[-7:-1].lstrip(" "))
                 my_list.append(t)
+
+            # Sets rate for an existing comptimesheet
+            if char[-1] == "\n" and line.__contains__("JPO"):
+                grate = nu.JPO.rate
+            elif char[-1] == "\n" and line.__contains__("Chief"):
+                grate = nu.Chief.rate
+            elif char[-1] == "\n" and line.__contains__("Staff"):
+                grate = nu.Staff.rate
+
     gBank = my_list[-1]
     f.close()
 
@@ -151,20 +162,24 @@ else:
     print("Examples are Chief, JPO, or Staff")
     gposition = input("What is your position? ")
 
+    # Uses the position to set the user name and rate
     match gposition:
         case "Chief":
             gname = nu.Chief(gname)
+            grate = nu.Chief.rate
         case "JPO":
             gname = nu.JPO(gname)
+            grate = nu.JPO.rate
         case "Staff":
             gname = nu.Staff(gname)
+            grate = nu.Staff.rate
         case _:
             print("That position does not exist!")
             print("Cannot create bankfile.")
             quit()
             running = False
 
-    # Creates running file skeleton
+    # Creates a running file skeleton
     f = open("D:/Temp/Comptime/comptimerun.txt", "w")
     f.write(nu.User.CompanyName +"\n"
             + "-" * 40 + "\n"

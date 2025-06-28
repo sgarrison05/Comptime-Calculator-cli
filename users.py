@@ -1,65 +1,40 @@
 """A set of classes to represent officers at the office."""
 
 class User:
-    """A simplet attempt to represent an individual"""    
+    """A simple attempt to represent an individual"""    
 
     CompanyName = "Orange County Juvenile Probation Dept."
 
-    def __init__(self, name, title):
+    def __init__(self, name, _title):
         self.name = name
-        self._title = title
+        self._title = _title
         
     def __str__(self):
         """Print at statement describing the individual created"""
         return "Name = %s, Position = %s" %(self.name, self._title) 
     
-    """@property
-    def title(self):
-        
-        return self._title
-    
-    @title.setter
-    def title(self, value):
-        if value == 'JPO' or value == 'Chief' or value == 'Office Manager':
-            self._title = value
-        else:
-            print("Position is invalid.  No changes made.")"""
-
 
 class Staff(User):
     """Represents an Ordinary Line Officer at the office."""
-    # Get the parent attributes with super().__init__ 
-    def __init__(self, name):
-        super().__init__(name, title='Office Staff')
 
-    def calculate_Comp(self):
-        """Calculates Comptime for Office Staff at time-and-a-half."""
-        rate = float(1.50)
-        
-        return 
-    
+    # Get the parent attributes with super().__init__ 
+    def __init__(self, name, rate:float=1.50, _title='Office Staff'):
+        super().__init__(name, _title)
+        self.rate = rate    
 
 class JPO(User):
     """Represents an Ordinary Line Officer at the Office."""
-    def __init__(self, name):
-        super().__init__(name, title='JPO')
-
-    def calculate_Comp(self):
-        """Calculates Comptime for JPOs at time-and-a-half."""
-        rate = float(1.50)
-        
-        return 
-            
+    
+    def __init__(self, name, rate:float=1.50, _title='JPO'):
+        super().__init__(name, _title)
+        self.rate = rate                    
 
 class Chief(User):
     """Represents the Chief Juv Officer at the Office"""
-    def __init__(self, name):
-        super().__init__(name, title='Chief')
-        
-    def calculate_Comp(self):
-        """Calculates Comptime for the Chief at Straight Time Value"""
-        rate = float(1.00)
-        
-        return 
+    
+    def __init__(self, name, rate:float=1.00, _title='Chief'):
+        super().__init__(name, _title)
+        self.rate = rate
+    
 
     
