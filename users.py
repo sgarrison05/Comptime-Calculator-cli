@@ -15,23 +15,24 @@ class User:
     
 
 class Staff(User):
-    """Represents an Ordinary Line Officer at the office."""
+    """Represents Support Staff at the office."""
 
     # Get the parent attributes with super().__init__ 
     def __init__(self, name, rate:float=1.50, _title='Office Staff'):
         super().__init__(name, _title)
-        self.rate = rate    
+        self.rate = rate
 
 class JPO(User):
     """Represents an Ordinary Line Officer at the Office."""
     
     def __init__(self, name, rate:float=1.50, _title='JPO'):
         super().__init__(name, _title)
-        self.rate = rate                    
+        self.rate = rate
+        
 
 class Chief(User):
     """Represents the Chief Juv Officer at the Office"""
-    
+
     def __init__(self, name, rate:float=1.00, _title='Chief'):
         super().__init__(name, _title)
         self.rate = rate

@@ -142,11 +142,11 @@ if os.path.isdir("D:/Temp/Comptime") and os.path.isfile("D:/Temp/Comptime/compti
 
             # Sets rate for an existing comptimesheet
             if char[-1] == "\n" and line.__contains__("JPO"):
-                grate = nu.JPO.rate
+                grate = nu.JPO(gname).rate
             elif char[-1] == "\n" and line.__contains__("Chief"):
-                grate = nu.Chief.rate
+                grate = nu.Chief(gname).rate
             elif char[-1] == "\n" and line.__contains__("Staff"):
-                grate = nu.Staff.rate
+                grate = nu.Staff(gname).rate
 
     gBank = my_list[-1]
     f.close()
@@ -166,13 +166,13 @@ else:
     match gposition:
         case "Chief":
             gname = nu.Chief(gname)
-            grate = nu.Chief.rate
+            grate = nu.Chief(gname).rate
         case "JPO":
             gname = nu.JPO(gname)
-            grate = nu.JPO.rate
+            grate = nu.JPO(gname).rate
         case "Staff":
             gname = nu.Staff(gname)
-            grate = nu.Staff.rate
+            grate = nu.Staff(gname).rate
         case _:
             print("That position does not exist!")
             print("Cannot create bankfile.")
